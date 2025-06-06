@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://weacrx3l17we"]
+
+[ext_resource type="Script" uid="uid://cmi8ya450qb3c" path="res://Bullet.gd" id="1_v8qja"]
+[ext_resource type="Texture2D" uid="uid://b0bhro27xffl6" path="res://Tiles/tile_0000.png" id="2_t4vbm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2b2rl"]
+radius = 4.0
+height = 18.0
+
+[sub_resource type="Gradient" id="Gradient_v8qja"]
+
+[sub_resource type="Curve" id="Curve_v8qja"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_t4vbm"]
+curve = SubResource("Curve_v8qja")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v8qja"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 8, 0)
+scale_min = 0.0
+scale_max = 0.0
+scale_curve = SubResource("CurveTexture_t4vbm")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Bullet" type="Area2D" parent="."]
+script = ExtResource("1_v8qja")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bullet"]
+texture = ExtResource("2_t4vbm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet"]
+shape = SubResource("CapsuleShape2D_2b2rl")
+
+[node name="Line2D" type="Line2D" parent="Bullet"]
+position = Vector2(0, 20)
+width = 2.0
+gradient = SubResource("Gradient_v8qja")
+
+[node name="TrailParticless" type="GPUParticles2D" parent="Bullet"]
+lifetime = 0.5
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_v8qja")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d163x3ogpxlyy"]
+
+[ext_resource type="PackedScene" uid="uid://dvaj5ciom0d2w" path="res://Player.tscn" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://65fkbwcvmui6" path="res://TypingUI.tscn" id="2_uu6xs"]
+
+[node name="root" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_glv2v")]
+position = Vector2(-80.984, -14.3464)
+
+[node name="TypingUI" parent="." instance=ExtResource("2_uu6xs")]

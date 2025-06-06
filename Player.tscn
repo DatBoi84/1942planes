@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvaj5ciom0d2w"]
+
+[ext_resource type="Script" uid="uid://brspmkh074ady" path="res://player.gd" id="1_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://4g6tyygcq62q" path="res://Ships/ship_0000.png" id="1_xhfnw"]
+[ext_resource type="PackedScene" uid="uid://weacrx3l17we" path="res://bullet.tscn" id="2_kne1u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kpjcp"]
+radius = 8.0
+height = 24.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_kpjcp")
+bullet_scene = ExtResource("2_kne1u")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_xhfnw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kpjcp")
+
+[node name="BulletSpawn" type="Marker2D" parent="Player"]
+position = Vector2(0, -9.01)
